@@ -1,12 +1,7 @@
 <resources>
-    <string name="app_name">MyApplication</string>
-    <!-- 다른 문자열 리소스들 -->
-
-    <!-- 추가할 문자열 리소스 -->
     <string name="close">Close</string>
     <string name="hello_blank_fragment">Hello Blank Fragment</string>
     <string name="app_name">Agarang</string>
-    <!-- Setting -->
     <string name="baby_name">%1$s</string>
     <string name="d_day">D-%1$s</string>
     <string name="due_date">%1$s.%2$s.%3$s</string>

@@ -1,6 +1,6 @@
 package com.example.myapplication
 
-import Home.HomeFragment
+import com.example.myapplication.Home.HomeFragment
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.databinding.ActivityMainBinding
@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        supportFragmentManager.beginTransaction().replace(R.id.main_frm, HomeFragment()).commitAllowingStateLoss()
+        supportFragmentManager.beginTransaction().replace(R.id.main_frm, ChangeCharFragment()).commitAllowingStateLoss()
 
     }
 }

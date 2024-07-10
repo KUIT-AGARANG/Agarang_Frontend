@@ -1,4 +1,4 @@
-package Home
+package com.example.myapplication.Home
 
 data class RecentDiaryData (
     val content: String,

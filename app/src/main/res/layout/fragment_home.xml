@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:layout_weight="1"
     android:background="#F4F1EC"
-    tools:context="Home.HomeFragment">
+    tools:context=".Home.HomeFragment">
 
     <TextView
         android:id="@+id/tv_today"
