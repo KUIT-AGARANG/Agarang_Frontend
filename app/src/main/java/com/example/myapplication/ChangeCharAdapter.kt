@@ -33,7 +33,7 @@ class ChangeCharAdapter(
         val holder: ViewHolder
 
         if (convertView == null) {
-            view = LayoutInflater.from(context).inflate(R.layout.grid_item, parent, false)
+            view = LayoutInflater.from(context).inflate(R.layout.char_item, parent, false)
             holder = ViewHolder()
             holder.imageView = view.findViewById(R.id.icon_image)
             holder.textView = view.findViewById(R.id.tv_char_name)
