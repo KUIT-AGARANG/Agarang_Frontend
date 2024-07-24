@@ -84,7 +84,7 @@ class CardviewAdapter(
         bottomSheetDialog.show()
         bottomSheetDialog.window?.let { window ->
             val displayMetrics = context.resources.displayMetrics
-            val width = (displayMetrics.widthPixels * 0.8).toInt() // 화면 너비의 80%
+            val width = (displayMetrics.widthPixels * 0.82).toInt() // 화면 너비의 82%
             window.setLayout(width, ViewGroup.LayoutParams.WRAP_CONTENT)
         }
     }
