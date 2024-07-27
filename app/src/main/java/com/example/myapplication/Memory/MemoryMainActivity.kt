@@ -11,7 +11,7 @@ class MemoryMainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_memory_main)
 
 
-        val fragment=PicAssociationFragment()
+        val fragment=PictureFragment()
         supportFragmentManager.beginTransaction()
             .replace(R.id.memory_frm,fragment)
             .commit()

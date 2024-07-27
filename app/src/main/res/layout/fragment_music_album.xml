@@ -75,6 +75,7 @@
         android:layout_marginStart="18dp"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="19dp"
+        tools:listitem="@layout/album_music_item"
         tools:ignore="MissingConstraints">
     </androidx.recyclerview.widget.RecyclerView>
 

@@ -6,6 +6,7 @@ import android.content.pm.PackageManager
 import android.media.MediaRecorder
 import android.os.Bundle
 import android.os.Environment
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -13,15 +14,20 @@ import android.view.ViewGroup
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.myapplication.R
-import com.example.myapplication.Retrofit.RetrofitInstance
 import com.example.myapplication.databinding.FragmentPicAssociationBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import okhttp3.Call
+import okhttp3.Callback
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.OkHttpClient
+import okhttp3.Request
 import okhttp3.RequestBody
+import okhttp3.RequestBody.Companion.asRequestBody
+import okhttp3.Response
+import org.json.JSONException
 import org.json.JSONObject
 import java.io.File
 import java.io.IOException
@@ -54,7 +60,6 @@ class PicAssociationFragment : Fragment() {
             binding.ivRecordArrowBtn.visibility=View.VISIBLE
             binding.ivRecordIng.visibility=View.VISIBLE
             binding.ivRecordingNextBtn.visibility=View.GONE
-
         }
         binding.ivRecordingNextBtn.setOnClickListener {
             val fragment=DeepQuestionFragment()
@@ -86,11 +91,13 @@ class PicAssociationFragment : Fragment() {
         return binding.root
     }
     private fun startRecording() {
-        audioFile = File(requireContext().getExternalFilesDir(Environment.DIRECTORY_MUSIC), "recorded_audio.wav")
+        audioFile = File(requireContext().getExternalFilesDir(Environment.DIRECTORY_MUSIC), "recorded_audio.m4a")
         mediaRecorder = MediaRecorder().apply {
             setAudioSource(MediaRecorder.AudioSource.MIC)
-            setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP)
-            setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB)
+            setOutputFormat(MediaRecorder.OutputFormat.MPEG_4)
+            setAudioEncoder(MediaRecorder.AudioEncoder.AAC)
+            setAudioEncodingBitRate(128000)
+            setAudioSamplingRate(44100)
             setOutputFile(audioFile?.absolutePath)
             try {
                 prepare()
@@ -107,28 +114,50 @@ class PicAssociationFragment : Fragment() {
         }
         mediaRecorder = null
     }
+
     private fun uploadAudioFileAndGetText() {
-        audioFile?.let { file ->
-            CoroutineScope(Dispatchers.IO).launch {
-                try {
-                    val requestFile = RequestBody.create("audio/wav".toMediaTypeOrNull(), file)
-                    val body = MultipartBody.Part.createFormData("audio", file.name, requestFile)
-                    val clientIdBody = clientId
-                    val clientSecretBody = clientSecret
+        val url = "https://naveropenapi.apigw.ntruss.com/recog/v1/stt?lang=Kor"
+        val client = OkHttpClient()
 
-                    // Retrofit 호출
-                    val response = RetrofitInstance.api.uploadAudio(body, clientIdBody, clientSecretBody)
+        if (audioFile == null || !audioFile!!.exists()) {
+            Log.e("UploadAudio", "Audio file does not exist")
+            return
+        }
 
-                    CoroutineScope(Dispatchers.Main).launch {
-                        binding.tvRecordNotice.text = response.text
+        val mediaType = "application/octet-stream".toMediaTypeOrNull()
+        val requestBody = audioFile!!.asRequestBody(mediaType)
+
+        val request = Request.Builder()
+            .url(url)
+            .addHeader("X-NCP-APIGW-API-KEY-ID", clientId)
+            .addHeader("X-NCP-APIGW-API-KEY", clientSecret)
+            .addHeader("Content-Type", "application/octet-stream")
+            .post(requestBody)
+            .build()
+
+        client.newCall(request).enqueue(object : Callback {
+            override fun onFailure(call: Call, e: IOException) {
+                Log.e("UploadAudio", "API call failed", e)
+            }
+
+            override fun onResponse(call: Call, response: Response) {
+                val responseBody = response.body?.string()
+                if (response.isSuccessful && responseBody != null) {
+                    Log.d("성공", "API Response: ${responseBody}")
+                    try {
+                        val jsonObject = JSONObject(responseBody)
+                        val text = jsonObject.optString("text")
+                        activity?.runOnUiThread {
+                            // UI 업데이트
+                            binding.tvRecordNotice.text = "text"
+                        }
+                    } catch (e: JSONException) {
+                        Log.e("UploadAudio", "JSON parsing error", e)
                     }
-                } catch (e: Exception) {
-                    e.printStackTrace()
-                    CoroutineScope(Dispatchers.Main).launch {
-                        binding.tvRecordNotice.text = "녹음 오류가 발생했습니다. 다시 시도해주세요."
-                    }
+                } else {
+                    Log.e("UploadAudio", "API call failed: ${response.code} - ${responseBody}")
                 }
             }
-        }
+        })
     }
 }

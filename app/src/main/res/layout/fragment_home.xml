@@ -16,7 +16,7 @@
         android:textSize="12.92sp"
         android:textColor="#A8A8A8"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="106dp"
+        android:layout_marginTop="70dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
     <TextView
@@ -58,7 +58,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_d_day"
-        android:layout_marginTop="57.51dp">
+        android:layout_marginTop="40dp">
         <ImageView
             android:id="@+id/iv_home_growth_white"
             android:layout_width="wrap_content"
@@ -110,6 +110,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toTopOf="@id/fl_music_bar"
+        android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -118,13 +119,13 @@
 
     <FrameLayout
         android:id="@+id/fl_music_bar"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         tools:ignore="MissingConstraints">
         <ImageView
             android:id="@+id/iv_music_background"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_music_bar"/>
         <com.google.android.material.imageview.ShapeableImageView
@@ -153,6 +154,35 @@
             android:layout_marginStart="63dp"
             android:layout_marginTop="36dp"/>
 
+        <ImageView
+            android:id="@+id/iv_music_bar_option"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_music_bar_option"
+            android:layout_marginStart="330dp"
+            android:layout_marginTop="22dp"/>
+        <ImageView
+            android:id="@+id/iv_music_bar_next"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/music_bar_next"
+            android:layout_marginStart="295dp"
+            android:layout_marginTop="24dp"/>
+        <ImageView
+            android:id="@+id/iv_music_bar_play"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/music_bar_play"
+            android:layout_marginStart="253dp"
+            android:layout_marginTop="20dp"/>
+
+        <ImageView
+            android:id="@+id/iv_music_bar_previous"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_music_bar_previous"
+            android:layout_marginStart="205dp"
+            android:layout_marginTop="24dp"/>
     </FrameLayout>
 
 
