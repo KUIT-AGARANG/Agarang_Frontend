@@ -35,18 +35,21 @@ class CardViewAdapter(
             tvContent.text = item.content
 
             ivBookmark.setImageResource(
-                if (item.bookmark == 1) R.drawable.ic_heart_red
+                if (item.favorite) R.drawable.ic_heart_red
                 else R.drawable.ic_heart_gray
             )
 
             ivBookmark.setOnClickListener {
-                item.bookmark = if (item.bookmark == 0) 1 else 0
+                val updatedFavoriteStatus = !item.favorite
+                item.favorite = updatedFavoriteStatus
+
                 ivBookmark.setImageResource(
-                    if (item.bookmark == 1) R.drawable.ic_heart_red
+                    if (updatedFavoriteStatus) R.drawable.ic_heart_red
                     else R.drawable.ic_heart_gray
                 )
                 onBookmarkClicked(item.id.toLong())
                 notifyItemChanged(position)
+                onItemDeleted(item)
             }
 
             ivOption.setOnClickListener {

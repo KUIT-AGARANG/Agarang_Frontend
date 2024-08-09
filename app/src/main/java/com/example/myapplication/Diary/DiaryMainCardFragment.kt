@@ -9,8 +9,13 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
+
+import com.example.myapplication.Data.Response.DiaryCardResponse
+import com.example.myapplication.Data.Response.Result
+
 import com.example.myapplication.Data.Request.bookmarkSetRequest
 import com.example.myapplication.Data.Response.BookmarkSetResult
+
 import com.example.myapplication.R
 import com.example.myapplication.Retrofit.DiaryIF
 import com.example.myapplication.Retrofit.RetrofitService
@@ -34,39 +39,97 @@ class DiaryMainCardFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentDiaryMainCardBinding.inflate(inflater, container, false)
-
         binding.ivDiaryPrevious.setOnClickListener {
             parentFragmentManager.popBackStack()
         }
-
         return binding.root
     }
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+/*
         arguments?.let {
-            val data = it.getSerializable("data") as? ArrayList<DiaryMainDayData>
-            val position = it.getInt("position", 0)
+            val date = it.getString("date") ?: return@let
+            fetchDiaryCard(date)
+        }*/
+        // 테스트용 날짜 지정. 추후 위 버전으로 변경해야함
+        val testDate = "20240701"
+        fetchDiaryCard(testDate)
+    }
 
-            if (data != null) {
-                setData(data, position)
+    private fun fetchDiaryCard(date: String) {
+        val service = RetrofitService.retrofit.create(DiaryIF::class.java)
+
+        //테스트용 날짜.
+        val testDate = "20240701"
+        service.getCardViewByDate("card", date).enqueue(object : Callback<DiaryCardResponse> {
+            override fun onResponse(call: Call<DiaryCardResponse>, response: Response<DiaryCardResponse>) {
+                if (response.isSuccessful) {
+                    val apiResponse = response.body()
+
+                    if (apiResponse != null && apiResponse.isSuccess) {
+                        handleApiResponse(apiResponse.result)
+                    } else {
+                        Log.e("오류", "API 요청이 성공하지 못했습니다: ${apiResponse?.message}")
+                    }
+                } else {
+                    val errorBody = response.errorBody()?.string()
+                    Log.e("오류", "Response error: $errorBody")
+                }
             }
-        }
+
+            override fun onFailure(call: Call<DiaryCardResponse>, t: Throwable) {
+                Log.e("실패", "API 요청 실패: ${t.message}")
+            }
+        })
+    }
+
+    private fun handleApiResponse(result: Result) {
+        // API 응답 처리
+        // diaryDataList를 API 응답을 사용하여 초기화
+
+        diaryDataList.clear()
+        diaryDataList.addAll(result.memories.map { memory ->
+
+            // 날짜 형식 변환. API연동오류때문에 일시적으로 추가 date = memory.date 수정
+            val formattedDate = memory.date.replace(". ", "").replace(".", "")
+            DiaryMainDayData(
+                writer = memory.writer,
+                content = memory.content,
+                hashTags = memory.hashTags,
+                date = formattedDate,
+                favorite = memory.favorite?: false,
+            )
+        })
+        // RecyclerView 초기화
+        setupRecyclerViews()
+
     }
 
     private fun setupRecyclerViews() {
         val currentCalendar = Calendar.getInstance()
-        dateAdapter = DateAdapter(
+        /*dateAdapter = DateAdapter(
             currentCalendar.get(Calendar.YEAR),
             currentCalendar.get(Calendar.MONTH) + 1,
             diaryDataList
         ) { position ->
             scrollToPosition(position)
+        }*/
+        dateAdapter = DateAdapter(
+            currentCalendar.get(Calendar.YEAR),
+            currentCalendar.get(Calendar.MONTH) + 1,
+            diaryDataList
+        ) { selectedDate ->
+            // 날짜가 선택되었을 때 API 호출
+            fetchDiaryCard(selectedDate)
         }
+
         binding.rvDiaryDate.apply {
             adapter = dateAdapter
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         }
+
 
         cardAdapter = CardViewAdapter(diaryDataList, { deletedItem ->
             // 항목이 삭제되었을 때 호출되는 콜백
@@ -74,6 +137,7 @@ class DiaryMainCardFragment : Fragment() {
         }, { itemId ->
             sendBookmarkRequest(itemId)
         })
+
         binding.rvDiaryCardView.apply {
             adapter = cardAdapter
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
@@ -100,7 +164,6 @@ class DiaryMainCardFragment : Fragment() {
                 }
             })
         }
-
         scrollToPosition(currentPosition)
     }
 
@@ -149,14 +212,25 @@ class DiaryMainCardFragment : Fragment() {
 
                 // DateAdapter의 선택된 위치 업데이트
                 dateAdapter.updateSelectedPosition(diaryDataList[position].day - 1)
-            } else {
+
+
+
+/* 불필요
+                // DateAdapter의 선택된 위치 업데이트
+                dateAdapter.updateSelectedPosition(diaryDataList[position].day - 1)*/
+            }
+
+            /*else {
                 // 모든 아이템이 삭제된 경우
                 currentPosition = RecyclerView.NO_POSITION
                 dateAdapter.updateSelectedPosition(RecyclerView.NO_POSITION)
-            }
+            }*/
+
         }
     }
 
+    //다이어리 삭제 후 호출되는 함수
+    //(다이어리 삭제 후 카드 조회 API를 다시 호출하면 되지 않나..? 고민)
     private fun updateDateAdapterAfterDeletion(deletedItem: DiaryMainDayData) {
         // diaryDataList에서 삭제된 항목 제거
         diaryDataList.remove(deletedItem)
@@ -182,6 +256,7 @@ class DiaryMainCardFragment : Fragment() {
         if (diaryDataList.isNotEmpty()) {
             binding.rvDiaryCardView.scrollToPosition(currentPosition)
         }
+
     }
 
     private fun updateDateSelection(position: Int) {

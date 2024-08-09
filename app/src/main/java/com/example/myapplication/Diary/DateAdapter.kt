@@ -14,7 +14,8 @@ class DateAdapter(
     private var year: Int,
     private var month: Int,
     private var items: List<DiaryMainDayData>,
-    private val onItemClick: (Int) -> Unit
+    //클릭된 날짜를 전달하는 콜백 함수 ... Int를 String으로 변경함
+    private val onItemClick: (String) -> Unit
 ) : RecyclerView.Adapter<DateAdapter.ViewHolder>() {
 
     var selectedPosition = RecyclerView.NO_POSITION
@@ -65,11 +66,16 @@ class DateAdapter(
             }
 
             root.setOnClickListener {
-                if (diaryItem != null) {
+                /*if (diaryItem != null) {
                     val diaryItemPosition = items.indexOf(diaryItem)
                     onItemClick(diaryItemPosition)
                     updateSelectedPosition(position)
-                }
+                }*/
+
+                // 날짜 클릭 시 처리
+                val selectedDate = String.format("%04d%02d%02d", year, month, day)
+                onItemClick(selectedDate) // 클릭된 날짜를 콜백을 통해 전달
+                updateSelectedPosition(position)
             }
         }
     }
