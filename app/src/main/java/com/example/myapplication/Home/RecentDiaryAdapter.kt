@@ -7,24 +7,30 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.myapplication.R
-import com.example.myapplication.databinding.RecentItemBinding
 
 class RecentDiaryAdapter (private val diaryList: List<RecentDiaryData>) :
-    /*RecyclerView.Adapter<RecentDiaryAdapter.DiaryViewHolder>() {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DiaryViewHolder {
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.recent_item, parent, false)
-        return DiaryViewHolder(view)
-    }
+    RecyclerView.Adapter<RecentDiaryAdapter.DiaryViewHolder>() {
+
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DiaryViewHolder {
+            val view = LayoutInflater.from(parent.context)
+                .inflate(R.layout.recent_item, parent, false)
+            return DiaryViewHolder(view)
+        }
 
     override fun onBindViewHolder(holder: DiaryViewHolder, position: Int) {
         val currentItem = diaryList[position]
-        // 이미지 로딩
-        Glide.with(holder.itemView.context)
+        // 이미지 로딩 (Glide 사용 예시)
+
+        /*Glide.with(holder.itemView.context)
             .load(currentItem.imageUrl)
             .error(R.drawable.post_sample)
-            .into(holder.imageView)
+            .into(holder.imageView)*/
+        /*Glide.with(holder.itemView.context)
+            .load(R.drawable.recent_card_sample)
+            .error(R.drawable.post_sample)
+            .into(holder.imageView)*/
 
+        holder.imageView.setImageResource(currentItem.imageUrl)
     }
 
     override fun getItemCount(): Int {
@@ -34,25 +40,6 @@ class RecentDiaryAdapter (private val diaryList: List<RecentDiaryData>) :
 
     inner class DiaryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val imageView: ImageView = itemView.findViewById(R.id.iv_diary_image)
-    }*/
-
-    RecyclerView.Adapter<RecentDiaryAdapter.ViewHolder>() {
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val binding = RecentItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return ViewHolder(binding)
-    }
-
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(diaryList[position])
-    }
-
-    override fun getItemCount(): Int = diaryList.size
-
-    inner class ViewHolder(private val binding: RecentItemBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(diary: RecentDiaryData) {
-            Glide.with(binding.root.context).load(diary.imageUrl).into(binding.ivDiaryImage)
-        }
     }
 
 }

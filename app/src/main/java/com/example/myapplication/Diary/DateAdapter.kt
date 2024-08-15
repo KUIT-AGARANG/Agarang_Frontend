@@ -53,11 +53,8 @@ class DateAdapter(
                 tvDay.visibility = View.GONE
                 tvDayBelow.visibility = View.VISIBLE
                 tvDayBelow.text = day.toString()
-                /*Glide.with(holder.itemView.context)
-                    .load(diaryItem.imageResId)
-                    .into(ivDiaryThumbnail)*/
                 Glide.with(holder.itemView.context)
-                    .load(diaryItem.thumbnailUrl_1)
+                    .load(diaryItem.imageResId)
                     .into(ivDiaryThumbnail)
             } else {
                 ivDiaryThumbnail.visibility = View.GONE

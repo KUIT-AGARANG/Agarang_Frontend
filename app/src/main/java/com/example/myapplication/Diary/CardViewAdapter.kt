@@ -2,9 +2,7 @@ package com.example.myapplication.Diary
 
 import android.content.Context
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -35,17 +33,15 @@ class CardViewAdapter(
                 .load(item.imageResId)
                 .into(ivDiaryImage)
             tvContent.text = item.content
-            tvWriter.text = item.writer
-
 
             ivBookmark.setImageResource(
-                if (item.bookmarked) R.drawable.ic_heart_red
+                if (item.favorite) R.drawable.ic_heart_red
                 else R.drawable.ic_heart_gray
             )
 
             ivBookmark.setOnClickListener {
-                val updatedFavoriteStatus = !item.bookmarked
-                item.bookmarked = updatedFavoriteStatus
+                val updatedFavoriteStatus = !item.favorite
+                item.favorite = updatedFavoriteStatus
 
                 ivBookmark.setImageResource(
                     if (updatedFavoriteStatus) R.drawable.ic_heart_red
@@ -53,27 +49,13 @@ class CardViewAdapter(
                 )
                 onBookmarkClicked(item.id.toLong())
                 notifyItemChanged(position)
-                onItemDeleted(item.id.toLong(), item)
+                onItemDeleted(item)
             }
 
             ivOption.setOnClickListener {
                 showOptionsBottomSheet(holder.itemView.context, item)
             }
-            // 해시태그 설정
-            val hashTags = item.hashTags
-
-            tvHashtag1.text = hashTags.getOrNull(0)?.let { "#$it" } ?: ""  // 첫 번째 해시태그
-            tvHashtag2.text = hashTags.getOrNull(1)?.let { "#$it" } ?: ""  // 두 번째 해시태그
-            tvHashtag3.text = hashTags.getOrNull(2)?.let { "#$it" } ?: ""  // 세 번째 해시태그
-
-            // 해시태그가 없을 경우 TextView를 숨기기
-            tvHashtag1.visibility = if (hashTags.size > 0) View.VISIBLE else View.GONE
-            tvHashtag2.visibility = if (hashTags.size > 1) View.VISIBLE else View.GONE
-            tvHashtag3.visibility = if (hashTags.size > 2) View.VISIBLE else View.GONE
-
-
         }
-
     }
 
     override fun getItemCount() = items.size

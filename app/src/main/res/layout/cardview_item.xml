@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="288dp"
     android:layout_height="match_parent"
     android:layout_marginStart="12dp"
@@ -61,7 +60,6 @@
             app:layout_constraintBottom_toBottomOf="@id/tvDate"
             app:layout_constraintEnd_toEndOf="parent"/>
 
-
         <TextView
             android:id="@+id/tvContent"
             app:layout_constraintTop_toBottomOf="@id/tvDate"
@@ -73,42 +71,6 @@
             android:layout_marginTop="24dp"
             android:textSize="12sp"
             android:textColor="@color/black" />
-        <TextView
-            android:id="@+id/tv_writer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/tvContent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="14dp"/>
-
-
-        <TextView
-            android:id="@+id/tv_hashtag_1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="10sp"
-            android:textColor="#60AFBA"
-            app:layout_constraintTop_toBottomOf="@id/tv_writer"
-            app:layout_constraintStart_toStartOf="@id/tvContent"
-            android:layout_marginStart="13.5dp"/>
-        <TextView
-            android:id="@+id/tv_hashtag_2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="10sp"
-            android:textColor="#60AFBA"
-            app:layout_constraintStart_toEndOf="@id/tv_hashtag_1"
-            android:layout_marginStart="3sp"
-            app:layout_constraintTop_toBottomOf="@id/tv_writer"/>
-        <TextView
-            android:id="@+id/tv_hashtag_3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="10sp"
-            android:textColor="#60AFBA"
-            app:layout_constraintStart_toEndOf="@id/tv_hashtag_2"
-            android:layout_marginStart="3sp"
-            app:layout_constraintTop_toBottomOf="@id/tv_writer"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

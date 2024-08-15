@@ -5,7 +5,7 @@ data class Memory(
     val content: String,
     val hashTags: List<String>,
     val date: String,
-    val bookmarked: Boolean
+    val favorite: Boolean
 )
 
 data class Result(

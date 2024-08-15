@@ -19,7 +19,6 @@
         android:layout_marginTop="70dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
-
     <TextView
         android:id="@+id/tv_d_day_text"
         android:layout_width="wrap_content"
@@ -87,14 +86,6 @@
             android:layout_marginStart="170.6dp"
             android:layout_marginBottom="198.59dp"
             android:src="@drawable/ic_rectangle_2"/>
-        <TextView
-            android:id="@+id/tv_speech_bubble"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="말풍선"
-            android:textColor="@color/black"
-            android:layout_marginStart="190dp"
-            android:layout_marginTop="10dp"/>
 
     </FrameLayout>
 
