@@ -14,9 +14,6 @@ import com.example.myapplication.R
 class ChangeCharAdapter(
     private val context: Context,
     private val items: List<HomeChangeCharResponse.Character>,
-
-    /*private val names: List<String>,
-    private val descriptions: List<String>,*/
     // 캐릭터 변경을 처리하는 리스너
     private val changeListener: (HomeChangeCharResponse.Character)-> Unit
 ) : BaseAdapter() {
@@ -54,7 +51,7 @@ class ChangeCharAdapter(
         Glide.with(context)
             .load(character.imageUrl)
             .into(iconImageView!!)
-// 추가. 선택된 아이템의 배경 표시
+/*// 추가. 선택된 아이템의 배경 표시
         backgroundSelected?.visibility = if (selectedPosition == position) View.VISIBLE else View.GONE
 
 //체크표시 추가
@@ -64,9 +61,20 @@ class ChangeCharAdapter(
         } else {
             checkOrange?.visibility = View.GONE
             checkGray?.visibility = View.VISIBLE
+        }*/
+
+        if (selectedPosition == position) {
+            backgroundSelected?.visibility = View.VISIBLE
+            checkOrange?.visibility = View.VISIBLE
+            checkGray?.visibility = View.GONE
+        } else {
+            backgroundSelected?.visibility = View.GONE
+            checkOrange?.visibility = View.GONE
+            checkGray?.visibility = View.VISIBLE
         }
 
-        // 아이템 클릭 이벤트 처리
+
+        /*// 아이템 클릭 이벤트 처리
         iconImageView.setOnClickListener {
             val activity = context as FragmentActivity
             val dialogFragment = ItemDetailDialogFragment.newInstance(
@@ -74,16 +82,17 @@ class ChangeCharAdapter(
                 character.name,     // 이름 전달
                 character.description // 설명 전달
             ).apply {
-                /*setChangeListener(changeListener)*/
+                *//*setChangeListener(changeListener)*//*
                 setChangeListener { selectedCharacterUrl->
                     changeListener(character)
                 }
             }
             dialogFragment.show(activity.supportFragmentManager, "ItemDetailDialogFragment")
-        }
+        }*/
 
         return view ?: throw IllegalStateException("View should not be null")
     }
+
     //추가 함수
     fun setSelectedPosition(position: Int) {
         selectedPosition = position

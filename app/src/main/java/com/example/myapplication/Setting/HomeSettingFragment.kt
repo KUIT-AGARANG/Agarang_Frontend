@@ -1,6 +1,7 @@
 package com.example.myapplication.Setting
 
 import android.content.Context
+import android.content.res.Resources
 import android.icu.text.SimpleDateFormat
 import android.os.Bundle
 import android.util.Log
@@ -64,7 +65,13 @@ class HomeSettingFragment : Fragment() {
         if (selectedChar != -1) {
             // selectedChar 값을 사용하여 작업 수행
             binding.sivProperty.setImageResource(selectedChar)
+        } else {
+            Log.e("HomeSettingFragment", "Invalid resource ID: $selectedChar")
+            // 기본 이미지 설정
+            binding.sivProperty.setImageResource(R.drawable.forest)
         }
+
+
 
         fetchBabyInfo()
         return binding.root
@@ -111,12 +118,10 @@ class HomeSettingFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+/*
         val selectedImageResourceId = arguments?.getInt("selected_char") ?: return
         val imageView: ImageView = view.findViewById(R.id.siv_property)
-        imageView.setImageResource(selectedImageResourceId)
-
-
+        imageView.setImageResource(selectedImageResourceId)*/
 
     }
 }
