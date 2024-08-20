@@ -1,18 +1,38 @@
 package com.example.myapplication.Memory
 
 import android.content.Context
+import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import com.example.myapplication.R
+import com.example.myapplication.SharedViewModel
 
 class GenreAdapter(
     private val context: Context,
-    private val items: Array<String>
+    private val items: Array<String>,
+    private val fragmentManager: FragmentManager,
+    private val sharedViewModel: SharedViewModel,
+    private val questionId: String
 ) : BaseAdapter() {
+
+    val genreMapping = mapOf(
+        "발라드" to "BALLAD",
+        "팝" to "POP",
+        "재즈" to "JAZZ",
+        "어쿠스틱" to "ACOUSTIC",
+        "알앤비" to "RNB",
+        "일렉트로닉" to "ELECTRONIC",
+        "락" to "ROCK",
+        "인디고" to "INDIE",
+        "힙합" to "HIPHOP"
+    )
 
     // 선택된 아이템의 인덱스를 저장할 변수
     private var selectedPosition = -1
@@ -53,6 +73,22 @@ class GenreAdapter(
         view?.setOnClickListener {
             selectedPosition = position
             notifyDataSetChanged()  // 뷰 갱신
+
+            //한글 감정 -> 영어 대문자
+            val selectGenre = items[position]
+            val genreCode = genreMapping[selectGenre] ?: selectGenre
+            Log.e("GenreAdapter",genreCode)
+            sharedViewModel.setGenre(genreCode)
+
+            // SelectMoodFragment로 전환
+            val transaction: FragmentTransaction = fragmentManager.beginTransaction()
+            val fragment=SelectMoodFragment()
+            val bundle = Bundle()
+            bundle.putString("id", questionId)
+            fragment.arguments = bundle
+            transaction.replace(R.id.memory_frm, fragment)
+            transaction.addToBackStack(null)
+            transaction.commit()
         }
 
         return view!!

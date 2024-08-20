@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    tools:context=".Diary.DiaryMainCardFragment">
+
+    <ImageView
+        android:id="@+id/iv_diary_previous"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_previous"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="21dp"/>
+
+    <ImageView
+        android:id="@+id/iv_diary_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/iv_diary_text"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="21dp"/>
+
+    <TextView
+        android:id="@+id/tv_diary_card_edit_complete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="완료"
+        android:layout_marginEnd="20dp"
+        android:textSize="20sp"
+        android:fontFamily="@font/pretendard500"
+        android:textColor="#656558"
+        app:layout_constraintTop_toTopOf="@id/iv_diary_title"
+        app:layout_constraintBottom_toBottomOf="@id/iv_diary_title"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <ImageView
+        android:id="@+id/iv_card_edit_image"
+        android:layout_width="315dp"
+        android:layout_height="178dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="60dp"/>
+
+    <EditText
+        android:id="@+id/tv_diary_card_edit_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:text="오늘도 맑고 화창한 날씨 덕분에 기분 좋은 하루를 시작했어. 아침 일찍 일어나서 남편이랑 산책을
+다녀왔어. 싱그러운 공기를 마시며 아가한테 좋은 기운을 듬뿍 전해주고 싶었거든. 걷는 동안 배 속에서 조금씩 느껴지는 아가의 움직임이 참 신기하고 사랑스러웠어."
+        app:layout_constraintTop_toBottomOf="@id/iv_card_edit_image"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="33dp"
+        android:fontFamily="@font/pretendard400"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp"/>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

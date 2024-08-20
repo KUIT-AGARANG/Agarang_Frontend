@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="326dp"
+    android:layout_height="165dp"
+    android:minWidth="326dp"
+    android:minHeight="165dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/diary_dialog_background">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:fontFamily="@font/pretendard600"
+        android:text="플레이리스트에서 제거하겠습니까?"
+        android:layout_marginTop="46dp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <ImageView
+        android:id="@+id/iv_diary_dialog_no"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="35dp"
+        android:layout_marginBottom="25dp"
+        android:src="@drawable/ic_music_no"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="아니오"
+        android:fontFamily="@font/pretendard600"
+        android:textSize="14sp"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toTopOf="@id/iv_diary_dialog_no"
+        app:layout_constraintBottom_toBottomOf="@id/iv_diary_dialog_no"
+        app:layout_constraintStart_toStartOf="@id/iv_diary_dialog_no"
+        app:layout_constraintEnd_toEndOf="@id/iv_diary_dialog_no"/>
+
+    <ImageView
+        android:id="@+id/iv_diary_dialog_yes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="35dp"
+        android:layout_marginBottom="25dp"
+        android:src="@drawable/ic_music_yes"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="예"
+        android:fontFamily="@font/pretendard600"
+        android:textSize="14sp"
+        android:textColor="@color/white"
+        app:layout_constraintTop_toTopOf="@id/iv_diary_dialog_yes"
+        app:layout_constraintBottom_toBottomOf="@id/iv_diary_dialog_yes"
+        app:layout_constraintStart_toStartOf="@id/iv_diary_dialog_yes"
+        app:layout_constraintEnd_toEndOf="@id/iv_diary_dialog_yes"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

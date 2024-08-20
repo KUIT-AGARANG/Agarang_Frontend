@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/whitebeige"
+    android:background="#F2F2F2"
     tools:context=".Setting.FamilyInfoFragment">
 
     <TextView
@@ -43,13 +43,22 @@
         android:textColor="#818181"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="156dp"
-        android:layout_marginEnd="309dp"
-        />
+        android:layout_marginTop="156dp" />
 
-    <ImageView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_family_info"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="5dp"
+        android:paddingLeft="7dp"
+        android:paddingRight="7dp"
+        app:layout_constraintTop_toBottomOf="@+id/tv_family_text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+
+    <!--<ImageView
         android:id="@+id/iv_family_blank_box"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -165,6 +174,6 @@
         app:layout_constraintBottom_toBottomOf="@id/tv_family_first"
         android:layout_marginStart="0.64dp"
         android:layout_marginBottom="13.67dp"
-        />
+        />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -202,10 +202,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_info_plus"
+        android:padding="5dp"
         app:layout_constraintStart_toStartOf="@id/iv_info_blank_box"
         app:layout_constraintTop_toTopOf="@id/iv_info_blank_box"
-        android:layout_marginStart="315.59dp"
-        android:layout_marginTop="23.07dp"
+        android:layout_marginStart="310.59dp"
+        android:layout_marginTop="18.07dp"
         />
 
     <ImageView
@@ -213,10 +214,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_info_plus"
+        android:padding="5dp"
         app:layout_constraintStart_toStartOf="@id/iv_info_blank_box"
         app:layout_constraintTop_toTopOf="@id/iv_info_blank_box"
-        android:layout_marginStart="315.59dp"
-        android:layout_marginTop="75.07dp"
+        android:layout_marginStart="310.59dp"
+        android:layout_marginTop="70.07dp"
         />
 
     <ImageView
@@ -224,10 +226,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_info_plus"
+        android:padding="5dp"
         app:layout_constraintStart_toStartOf="@id/iv_info_blank_box"
         app:layout_constraintTop_toTopOf="@id/iv_info_blank_box"
-        android:layout_marginStart="315.59dp"
-        android:layout_marginTop="128.07dp"
+        android:layout_marginStart="310.59dp"
+        android:layout_marginTop="123.07dp"
         />
 
     <ImageView
@@ -235,10 +238,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_info_plus"
+        android:padding="5dp"
         app:layout_constraintStart_toStartOf="@id/iv_info_blank_box"
         app:layout_constraintTop_toTopOf="@id/iv_info_blank_box"
-        android:layout_marginStart="315.59dp"
-        android:layout_marginTop="180.07dp"
+        android:layout_marginStart="310.59dp"
+        android:layout_marginTop="175.07dp"
         />
 
     <ImageView
@@ -297,10 +301,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_info_plus"
+        android:padding="5dp"
         app:layout_constraintStart_toStartOf="@id/iv_setting_blank_box"
         app:layout_constraintTop_toTopOf="@id/iv_setting_blank_box"
-        android:layout_marginStart="315.85dp"
-        android:layout_marginTop="21.87dp"
+        android:layout_marginStart="310.85dp"
+        android:layout_marginTop="16.87dp"
         />
 
     <ImageView
@@ -308,10 +313,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_info_plus"
+        android:padding="5dp"
         app:layout_constraintStart_toStartOf="@id/iv_setting_blank_box"
         app:layout_constraintTop_toTopOf="@id/iv_setting_blank_box"
-        android:layout_marginStart="315.85dp"
-        android:layout_marginTop="74.88dp"
+        android:layout_marginStart="310.85dp"
+        android:layout_marginTop="69.88dp"
         />
 
     <ImageView

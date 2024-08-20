@@ -16,47 +16,61 @@
         android:textColor="#C5C5C5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginStart="16.97dp"
         android:layout_marginTop="74.55dp"
-        android:layout_marginEnd="314.03dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="314dp"
         />
 
     <EditText
         android:id="@+id/et_birth_name"
         android:layout_width="wrap_content"
-        android:layout_height="24dp"
-        android:text=""
+        android:layout_height="wrap_content"
         android:hint="태명을 입력하세요."
         android:background="@null"
         android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginStart="30.27dp"
-        android:layout_marginTop="109.41dp"/>
+        app:layout_constraintStart_toStartOf="@id/tv_birth_name_text"
+        android:layout_marginStart="13.3dp"
+        app:layout_constraintTop_toBottomOf="@id/tv_birth_name_text"
+        android:layout_marginTop="18.86dp"
+        android:gravity="left"/>
+    <!--<TextView
+        android:id="@+id/tv_birth_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="아꺵이"
+        android:background="@null"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@id/tv_birth_name_text"
+        android:layout_marginStart="13.3dp"
+        app:layout_constraintTop_toBottomOf="@id/tv_birth_name_text"
+        android:layout_marginTop="18.86dp"
+        android:gravity="left"
+        android:visibility="gone"/>-->
 
     <ImageView
         android:id="@+id/btn_name_cancle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="317.67dp"
-        android:layout_marginTop="112dp"
         android:layout_marginEnd="24.33dp"
         android:src="@drawable/ic_cancle_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@id/et_birth_name" />
 
     <View
-        android:layout_width="337.031dp"
+        android:layout_width="338dp"
         android:layout_height="0.92dp"
         android:background="#C5C5C5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/et_birth_name"
+        app:layout_constraintTop_toBottomOf="@id/btn_name_cancle"
         android:layout_marginStart="11.48dp"
         android:layout_marginEnd="11.48dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="9dp"
         />
 
     <TextView
@@ -74,34 +88,34 @@
         android:layout_marginEnd="299.03dp"
         />
 
+
     <ImageView
         android:id="@+id/iv_ic_calendar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_calendar"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tv_birth_date"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginStart="317.67dp"
-        android:layout_marginTop="216.76dp"
         android:layout_marginEnd="24.33dp"
         />
+
 
     <TextView
         android:id="@+id/tv_birth_date"
         android:layout_width="wrap_content"
         android:layout_height="24dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginStart="30.27dp"
-        android:layout_marginTop="220dp"
         android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@id/tv_due_date_text"
+        android:layout_marginStart="13.3dp"
+        app:layout_constraintTop_toBottomOf="@id/tv_due_date_text"
+        android:layout_marginTop="18.86dp"
+
         />
 
-
-
     <View
-        android:layout_width="337.031dp"
+        android:layout_width="338dp"
         android:layout_height="0.92dp"
         android:background="#C5C5C5"
         app:layout_constraintStart_toStartOf="parent"
@@ -130,15 +144,15 @@
     <EditText
         android:id="@+id/et_weight"
         android:layout_width="wrap_content"
-        android:layout_height="24px"
+        android:layout_height="wrap_content"
         android:text=""
         android:hint="kg"
         android:background="@null"
         android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginStart="29.97dp"
-        app:layout_constraintBottom_toTopOf="@id/view_weight"
-        android:layout_marginBottom="9dp"
+        app:layout_constraintStart_toStartOf="@id/tv_weight_text"
+        android:layout_marginStart="13dp"
+        app:layout_constraintTop_toBottomOf="@id/tv_weight_text"
+        android:layout_marginTop="23.23dp"
         />
 
     <ImageView
@@ -146,24 +160,23 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="317.67dp"
-        android:layout_marginTop="339.46dp"
         android:layout_marginEnd="24.33dp"
         android:src="@drawable/ic_cancle_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@id/et_weight" />
 
     <View
         android:id="@+id/view_weight"
-        android:layout_width="337.031dp"
+        android:layout_width="338dp"
         android:layout_height="0.92dp"
         android:background="#C5C5C5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         android:layout_marginStart="11.48dp"
         android:layout_marginEnd="11.48dp"
-        android:layout_marginTop="364dp"
+        app:layout_constraintTop_toBottomOf="@id/ic_cancle_btn"
+        android:layout_marginTop="9dp"
         />
 
     <ImageView

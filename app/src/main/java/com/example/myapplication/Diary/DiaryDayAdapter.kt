@@ -41,7 +41,7 @@ class DiaryDayAdapter (val context: Context, val items: ArrayList<DiaryMainDayDa
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        Log.d("DiaryMonthAdapter", "Binding item at position $position")
+        Log.d("DiaryDayAdapter", "Binding item at position $position")
         holder.bind(items[position])
     }
 

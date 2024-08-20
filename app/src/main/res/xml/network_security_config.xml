@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">43.200.109.115</domain>
+        <domain includeSubdomains="true">ec2-43-200-109-115.ap-northeast-2.compute.amazonaws.com</domain>
+        <domain includeSubdomains="true">agarang.site</domain>
+    </domain-config>
+</network-security-config>

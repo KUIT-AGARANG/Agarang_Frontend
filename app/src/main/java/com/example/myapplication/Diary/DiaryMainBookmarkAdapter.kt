@@ -6,17 +6,24 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.myapplication.databinding.GridBookmarkItemBinding
-import com.example.myapplication.databinding.GridDayItemBinding
 
-class DiaryMainBookmarkAdapter (val context: Context, val items: ArrayList<DiaryMainDayData>) : RecyclerView.Adapter<DiaryMainBookmarkAdapter.ViewHolder>() {
+class DiaryMainBookmarkAdapter(
+    val context: Context,
+    val items: ArrayList<DiaryMainBookmarkData>,
+    private val onItemClick: (Int) -> Unit  // 클릭 리스너 추가
+) : RecyclerView.Adapter<DiaryMainBookmarkAdapter.ViewHolder>() {
 
-    inner class ViewHolder(val binding: GridBookmarkItemBinding) : RecyclerView.ViewHolder(binding.root){
-        fun bind(item : DiaryMainDayData){
-
+    inner class ViewHolder(val binding: GridBookmarkItemBinding) : RecyclerView.ViewHolder(binding.root) {
+        fun bind(item: DiaryMainBookmarkData) {
             Glide.with(context)
-                .load(item.imageResId)
+                .load(item.imageUrl)
                 .centerCrop()
                 .into(binding.ivDay)
+
+            // 아이템 클릭 리스너 설정
+            itemView.setOnClickListener {
+                onItemClick(item.id)
+            }
         }
     }
 
@@ -30,5 +37,4 @@ class DiaryMainBookmarkAdapter (val context: Context, val items: ArrayList<Diary
     }
 
     override fun getItemCount(): Int = items.size
-
 }

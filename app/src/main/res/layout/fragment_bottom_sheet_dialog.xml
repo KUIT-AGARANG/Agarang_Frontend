@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="300dp"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingBottom="30dp"
+    android:background="@drawable/bottom_sheet_background">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_diary_vector"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="19dp"
+        android:layout_marginBottom="20dp"/>
+
+    <LinearLayout
+        android:id="@+id/layoutEditOption"
+        android:background="@drawable/bottom_sheet_item_background_top"
+        android:layout_width="266dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="15dp"
+        android:layout_gravity="center"
+        android:gravity="center">
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_edit"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="추억 수정"
+            android:textStyle="bold"
+            android:textSize="14sp"
+            android:textColor="@android:color/black"
+            android:fontFamily="@font/pretendard500"
+            android:layout_marginStart="16dp"/>
+    </LinearLayout>
+
+    <View
+        android:layout_width="266dp"
+        android:layout_gravity="center"
+        android:layout_height="1dp"
+        android:background="#CACACA"/>
+
+    <LinearLayout
+        android:id="@+id/layoutDeleteOption"
+        android:layout_width="266dp"
+        android:layout_height="wrap_content"
+        android:background="#F3F3F3"
+        android:orientation="horizontal"
+        android:padding="15dp"
+        android:layout_gravity="center"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_diary_delete"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="추억 지우기"
+            android:textStyle="bold"
+            android:textSize="14sp"
+            android:textColor="@android:color/black"
+            android:fontFamily="@font/pretendard500"
+            android:layout_marginStart="16dp"/>
+    </LinearLayout>
+
+    <View
+        android:layout_width="266dp"
+        android:layout_gravity="center"
+        android:layout_height="1dp"
+        android:background="#CACACA"/>
+
+    <LinearLayout
+        android:id="@+id/layoutChangeNoteOption"
+        android:layout_width="266dp"
+        android:layout_height="wrap_content"
+        android:background="#F3F3F3"
+        android:orientation="horizontal"
+        android:padding="15dp"
+        android:layout_gravity="center"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_diary_change"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="노래 변경"
+            android:textStyle="bold"
+            android:textSize="14sp"
+            android:textColor="@android:color/black"
+            android:fontFamily="@font/pretendard500"
+            android:layout_marginStart="16dp"/>
+    </LinearLayout>
+
+    <View
+        android:layout_width="266dp"
+        android:layout_gravity="center"
+        android:layout_height="1dp"
+        android:background="#CACACA"/>
+
+    <LinearLayout
+        android:id="@+id/layoutShareOption"
+        android:layout_width="266dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@drawable/bottom_sheet_item_background_bot"
+        android:padding="15dp"
+        android:layout_gravity="center"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_diary_share"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="카카오톡으로 공유"
+            android:textStyle="bold"
+            android:textSize="14sp"
+            android:textColor="@android:color/black"
+            android:fontFamily="@font/pretendard500"
+            android:layout_marginStart="16dp"/>
+    </LinearLayout>
+</LinearLayout>

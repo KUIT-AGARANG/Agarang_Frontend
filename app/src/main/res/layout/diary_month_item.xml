@@ -33,7 +33,7 @@
             android:text="2024 / 05"
             app:layout_constraintTop_toTopOf="@id/iv_month"
             app:layout_constraintStart_toStartOf="@id/iv_month"
-            android:layout_marginTop="29dp"
+            android:layout_marginTop="20dp"
             android:layout_marginStart="23dp"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

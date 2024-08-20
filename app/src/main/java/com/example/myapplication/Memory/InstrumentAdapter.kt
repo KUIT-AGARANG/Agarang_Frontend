@@ -3,18 +3,21 @@ package com.example.myapplication.Memory
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
 import com.example.myapplication.databinding.InstrumentItemBinding
 import com.google.android.material.shape.ShapeAppearanceModel
 
 class InstrumentAdapter(
-    private val instruments: List<InstrumentData>,
-    private val onItemClick: (InstrumentData) -> Unit
+    val instruments: List<InstrumentData>,
+    private val onItemClickListener: OnItemClickListener
 ) : RecyclerView.Adapter<InstrumentAdapter.InstrumentViewHolder>() {
 
     private var selectedPosition: Int = -1
+
+    interface OnItemClickListener {
+        fun onItemClick(instrument: InstrumentData)
+    }
 
     inner class InstrumentViewHolder(val binding: InstrumentItemBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(instrument: InstrumentData, position: Int) {
@@ -29,15 +32,17 @@ class InstrumentAdapter(
                 binding.ivInstrument.visibility = View.VISIBLE
             }
 
-            if (instrument.shouldCrop) {
-                binding.ivInstrument.shapeAppearanceModel = ShapeAppearanceModel.builder()
+            val shapeAppearanceModel = if (instrument.shouldCrop) {
+                ShapeAppearanceModel.builder()
                     .setAllCornerSizes(ShapeAppearanceModel.PILL)
                     .build()
             } else {
-                binding.ivInstrument.shapeAppearanceModel = ShapeAppearanceModel.builder()
-                    .build()
+                ShapeAppearanceModel.builder().build()
             }
+            binding.ivInstrument.shapeAppearanceModel = shapeAppearanceModel
 
+
+//클릭리스너를 어댑터 말고 fragment 파일로 ㄱㄱ
             itemView.setOnClickListener {
                 if (selectedPosition == position) {
                     selectedPosition = -1
@@ -45,8 +50,9 @@ class InstrumentAdapter(
                     selectedPosition = position
                 }
                 notifyDataSetChanged()
-                onItemClick(instrument)
+                onItemClickListener.onItemClick(instrument)
             }
+
         }
     }
 

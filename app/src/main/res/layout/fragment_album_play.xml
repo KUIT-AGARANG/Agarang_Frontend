@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".Music.AlbumPlayFragment"
+    android:background="#FFFFFF">
+
+
+    <ImageView
+        android:id="@+id/iv_album_cover"
+        android:layout_width="213dp"
+        android:layout_height="213dp"
+        android:src="@drawable/music_album_cover_1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="50dp"/>
+
+    <TextView
+        android:id="@+id/tv_play_music_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="노래는 불빛처럼 달린다"
+        android:fontFamily="@font/pretendard600"
+        android:textSize="15sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="311dp"
+        />
+
+    <TextView
+        android:id="@+id/tv_play_music_hash_tag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="#신남"
+        android:fontFamily="@font/pretendard400"
+        android:textColor="#737373"
+        android:textSize="13sp"
+        app:layout_constraintTop_toBottomOf="@id/tv_play_music_name"
+        android:layout_marginTop="2dp"
+        app:layout_constraintStart_toStartOf="@id/tv_play_music_name"
+        />
+
+    <TextView
+        android:id="@+id/tv_play_music_hash_tag_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="#산책"
+        android:fontFamily="@font/pretendard400"
+        android:textColor="#737373"
+        android:textSize="13sp"
+        app:layout_constraintTop_toTopOf="@id/tv_play_music_hash_tag"
+        app:layout_constraintStart_toEndOf="@id/tv_play_music_hash_tag"
+        android:layout_marginStart="2dp"/>
+
+    <ImageView
+        android:id="@+id/iv_play_type_ic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_random_play"
+        app:layout_constraintTop_toTopOf="@id/tv_play_music_name"
+        app:layout_constraintBottom_toBottomOf="@id/tv_play_music_name"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="30dp"
+        android:visibility="invisible"
+        />
+
+    <ImageView
+        android:id="@+id/iv_play_type_ic_replay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_reply_one"
+        app:layout_constraintTop_toTopOf="@id/tv_play_music_name"
+        app:layout_constraintBottom_toBottomOf="@id/tv_play_music_name"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="30dp"
+        android:visibility="invisible"
+        />
+
+    <ImageView
+        android:id="@+id/iv_play_type_ic_select"
+        android:layout_width="8dp"
+        android:layout_height="9dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="4dp"
+        android:src="@drawable/ic_select_song"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@id/tv_play_music_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tv_play_music_name" />
+    
+    <SeekBar
+        android:id="@+id/seek_bar"
+        android:layout_width="304dp"
+        android:layout_height="5dp"
+        app:layout_constraintTop_toBottomOf="@id/tv_play_music_hash_tag"
+        android:layout_marginTop="13dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/tv_music_time_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2:18"
+        android:fontFamily="@font/pretendard400"
+        android:textColor="#737373"
+        android:textSize="11sp"
+        app:layout_constraintStart_toStartOf="@id/seek_bar"
+        app:layout_constraintTop_toBottomOf="@id/seek_bar"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="13dp"
+        />
+
+    <TextView
+        android:id="@+id/tv_music_time_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="5:16"
+        android:fontFamily="@font/pretendard400"
+        android:textColor="#737373"
+        android:textSize="11sp"
+        app:layout_constraintEnd_toEndOf="@id/seek_bar"
+        app:layout_constraintTop_toBottomOf="@id/seek_bar"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="13dp"
+        />
+
+    <ImageView
+        android:id="@+id/iv_play_back_ic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_play_back"
+        app:layout_constraintStart_toStartOf="@id/seek_bar"
+        app:layout_constraintTop_toBottomOf="@id/seek_bar"
+        android:layout_marginStart="62dp"
+        android:layout_marginTop="21dp"
+        />
+
+    <ImageView
+        android:id="@+id/iv_play_stop_ic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_play_stop"
+        app:layout_constraintStart_toStartOf="@id/seek_bar"
+        app:layout_constraintEnd_toEndOf="@id/seek_bar"
+        app:layout_constraintTop_toBottomOf="@id/seek_bar"
+        android:layout_marginTop="21dp"
+        />
+
+    <ImageView
+        android:id="@+id/iv_play_start_ic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/seek_bar"
+        app:layout_constraintEnd_toEndOf="@id/seek_bar"
+        app:layout_constraintTop_toBottomOf="@id/seek_bar"
+        android:layout_marginTop="21dp"
+        android:src="@drawable/ic_play_start_ic"
+        android:visibility="invisible"
+        />
+
+
+    <ImageView
+        android:id="@+id/iv_play_fore_ic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_play_fore"
+        app:layout_constraintTop_toBottomOf="@id/seek_bar"
+        android:layout_marginTop="21dp"
+        app:layout_constraintEnd_toEndOf="@id/seek_bar"
+        android:layout_marginEnd="62dp"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_music_album"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="435dp"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="18dp"
+        tools:listitem="@layout/album_music_item">
+    </androidx.recyclerview.widget.RecyclerView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+

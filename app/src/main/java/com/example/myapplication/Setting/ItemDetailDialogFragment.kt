@@ -7,27 +7,29 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.DialogFragment
+import com.bumptech.glide.Glide
 import com.example.myapplication.R
 
 
 class ItemDetailDialogFragment : DialogFragment() {
 
-    private var imageResourceId: Int = 0
+    private var imageUrl: String = ""
     private var charname: String = ""
     private var description: String = ""
-    private var changeListener: ChangeListener? = null
+    private var changeListener: ((String) -> Unit)?  = null
 
     companion object {
-        private const val ARG_IMAGE_RESOURCE_ID = "image_resource_id"
+        private const val ARG_IMAGE_URL = "image_url"
         private const val ARG_CHAR_NAME = "char_name"
         private const val ARG_DESCRIPTION = "description"
 
-        fun newInstance(imageResourceId: Int, charname: String, description: String): ItemDetailDialogFragment {
+        fun newInstance(imageUrl: String, charname: String, description: String): ItemDetailDialogFragment {
             val fragment = ItemDetailDialogFragment()
-            val args = Bundle()
-            args.putInt(ARG_IMAGE_RESOURCE_ID, imageResourceId)
-            args.putString(ARG_CHAR_NAME, charname)
-            args.putString(ARG_DESCRIPTION, description)
+            val args = Bundle().apply{
+                putString(ARG_IMAGE_URL, imageUrl)
+                putString(ARG_CHAR_NAME, charname)
+                putString(ARG_DESCRIPTION, description)
+            }
             fragment.arguments = args
             return fragment
         }
@@ -37,7 +39,7 @@ class ItemDetailDialogFragment : DialogFragment() {
         super.onCreate(savedInstanceState)
         setStyle(STYLE_NORMAL, R.style.CustomDialog)
         arguments?.let {
-            imageResourceId = it.getInt(ARG_IMAGE_RESOURCE_ID)
+            imageUrl = it.getString(ARG_IMAGE_URL, "")
             charname = it.getString(ARG_CHAR_NAME, "")
             description = it.getString(ARG_DESCRIPTION, "")
         }
@@ -54,7 +56,11 @@ class ItemDetailDialogFragment : DialogFragment() {
         val closeButton: ImageView = view.findViewById(R.id.close_button)
         val changeButton: ImageView = view.findViewById(R.id.change_button)
 
-        imageView.setImageResource(imageResourceId)
+        // 이미지 URL을 로드하여 ImageView에 설정 (Glide 사용)
+        Glide.with(requireContext())
+            .load(imageUrl)
+            .into(imageView)
+
         charNameTextView.text = charname
         descriptionTextView.text = description
 
@@ -63,7 +69,7 @@ class ItemDetailDialogFragment : DialogFragment() {
         }
 
         changeButton.setOnClickListener {
-            changeListener?.onChangeSelected(imageResourceId)
+            changeListener?.invoke(imageUrl)
             dismiss()
         }
         return view
@@ -73,11 +79,11 @@ class ItemDetailDialogFragment : DialogFragment() {
         super.onStart()
         dialog?.window?.setBackgroundDrawableResource(android.R.color.transparent)
     }
-    //변경하기버튼->추가
+    /*//변경하기버튼->추가
     interface ChangeListener {
-        fun onChangeSelected(imageResourceId: Int)
-    }
-    fun setChangeListener(listener: ChangeListener) {
+        fun onChangeSelected(imageUrl: Int)
+    }*/
+    fun setChangeListener(listener: (String) -> Unit) {
         changeListener = listener
     }
 }

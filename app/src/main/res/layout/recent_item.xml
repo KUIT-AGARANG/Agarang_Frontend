@@ -6,8 +6,9 @@
 
     <ImageView
         android:id="@+id/iv_diary_image"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="105dp"
+        android:layout_height="105dp"
+        android:scaleType="centerCrop"
         android:src="@drawable/recent_card_sample"/>
 
 </FrameLayout>

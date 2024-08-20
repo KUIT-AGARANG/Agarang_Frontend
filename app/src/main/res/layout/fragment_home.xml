@@ -16,9 +16,10 @@
         android:textSize="12.92sp"
         android:textColor="#A8A8A8"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="106dp"
+        android:layout_marginTop="70dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
+
     <TextView
         android:id="@+id/tv_d_day_text"
         android:layout_width="wrap_content"
@@ -29,6 +30,7 @@
         app:layout_constraintTop_toBottomOf="@id/tv_today"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
+
     <TextView
         android:id="@+id/tv_d_day"
         android:layout_width="wrap_content"
@@ -40,6 +42,7 @@
         app:layout_constraintTop_toBottomOf="@id/tv_d_day_text"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
+
     <ImageView
         android:id="@+id/iv_setting"
         android:layout_width="wrap_content"
@@ -51,49 +54,79 @@
         android:layout_marginEnd="16.9dp"/>
 
 
-    <FrameLayout
-        android:id="@+id/fl_home_growth"
+    <com.example.myapplication.Home.CustomCircleBarView
+        android:id="@+id/customCircleBarView"
         android:layout_width="244dp"
         android:layout_height="244dp"
+        android:layout_marginTop="185.75dp"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_d_day"
-        android:layout_marginTop="57.51dp">
-        <ImageView
-            android:id="@+id/iv_home_growth_white"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_ellipse_white"/>
-        <ImageView
-            android:id="@+id/iv_home_growth_orange"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_ellipse_orange"/>
-        <ImageView
-            android:id="@+id/iv_baby_tiger"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="46.1dp"
-            android:layout_marginTop="50.85dp"
-            android:src="@drawable/baby_tiger"/>
-        <ImageView
-            android:id="@+id/iv_rectangle_1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="166.71dp"
-            android:layout_marginTop="47.73dp"
-            android:src="@drawable/ic_rectangle_1"/>
+        android:padding="10dp" />
 
-        <!--framelayout으로할까..-->
+    <ImageView
+        android:id="@+id/iv_rectangle_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginEnd="43.96dp"
+        android:layout_marginTop="224.87dp"
+        app:layout_constraintEnd_toEndOf="@+id/iv_baby_tiger"
+        android:src="@drawable/ic_rectangle_1"/>
+
+    <ImageView
+        android:id="@+id/iv_baby_tiger"
+        android:layout_width="160dp"
+        android:layout_height="150dp"
+        android:src="@drawable/baby_tiger"
+        app:layout_constraintTop_toTopOf="@+id/customCircleBarView"
+        app:layout_constraintBottom_toBottomOf="@+id/customCircleBarView"
+        app:layout_constraintStart_toStartOf="@+id/customCircleBarView"
+        app:layout_constraintEnd_toEndOf="@+id/customCircleBarView"/>
+
+        <!-- 말풍선 레이아웃 -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_speech_bubble"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="6.62dp"
+        android:layout_marginStart="-5.86dp"
+        app:layout_constraintBottom_toTopOf="@id/iv_rectangle_1"
+        app:layout_constraintStart_toStartOf="@id/iv_rectangle_1">
+
+            <!-- 말풍선 이미지 -->
         <ImageView
             android:id="@+id/iv_rectangle_2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:src="@drawable/ic_rectangle_2"
+            app:layout_constraintTop_toTopOf="@id/tv_speech_bubble"
+            app:layout_constraintBottom_toBottomOf="@id/tv_speech_bubble"
+            app:layout_constraintStart_toStartOf="@id/tv_speech_bubble"
+            app:layout_constraintEnd_toEndOf="@id/tv_speech_bubble"
+            android:scaleType="fitXY"/>
+
+            <!-- 말풍선 텍스트 -->
+        <TextView
+            android:id="@+id/tv_speech_bubble"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="170.6dp"
-            android:layout_marginBottom="198.59dp"
-            android:src="@drawable/ic_rectangle_2"/>
+            android:text="엄마, 재주 뽐낼게요!"
+            android:textSize="12sp"
+            android:textColor="@color/black"
+            android:padding="10dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
 
-    </FrameLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
 
     <TextView
         android:layout_width="wrap_content"
@@ -105,55 +138,119 @@
         android:layout_marginBottom="5dp"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginStart="22dp"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_recent_card"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@id/fl_music_bar"
+        app:layout_constraintBottom_toTopOf="@id/iv_music_background"
+        android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         tools:ignore="MissingConstraints">
     </androidx.recyclerview.widget.RecyclerView>
 
-    <FrameLayout
-        android:id="@+id/fl_music_bar"
+
+
+    <View
+        android:id="@+id/iv_music_background"
+        android:layout_width="match_parent"
+        android:layout_height="62dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="@drawable/style_rounded" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/siv_music_photo"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.Full"
+        android:scaleType="centerCrop"
+        android:src="@drawable/recent_card_sample"
+        app:layout_constraintStart_toStartOf="@id/iv_music_background"
+        app:layout_constraintTop_toTopOf="@id/iv_music_background"
+        android:layout_marginStart="7dp"
+        android:layout_marginTop="9dp"/>
+    <TextView
+        android:id="@+id/tv_music_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        tools:ignore="MissingConstraints">
-        <ImageView
-            android:id="@+id/iv_music_background"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_music_bar"/>
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/siv_music_photo"
-            android:layout_width="44dp"
-            android:layout_height="44dp"
-            app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.Full"
-            android:scaleType="centerCrop"
-            android:src="@drawable/recent_card_sample"
-            android:layout_marginStart="9dp"
-            android:layout_marginTop="11dp"/>
-        <TextView
-            android:id="@+id/tv_music_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="노래 제목"
-            android:textSize="15sp"
-            android:layout_marginTop="14dp"
-            android:layout_marginStart="63dp"/>
-        <TextView
-            android:id="@+id/tv_music_tag"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="#태그1 #태그2"
-            android:textSize="12sp"
-            android:layout_marginStart="63dp"
-            android:layout_marginTop="36dp"/>
+        android:fontFamily="@font/pretendard500"
+        android:text="노래 제목"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        app:layout_constraintStart_toEndOf="@id/siv_music_photo"
+        app:layout_constraintTop_toTopOf="@id/siv_music_photo"
+        android:layout_marginTop="4dp"
+        android:layout_marginStart="9dp"/>
+    <TextView
+        android:id="@+id/tv_music_tag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="#태그1 #태그2"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@id/siv_music_photo"
+        app:layout_constraintTop_toTopOf="@id/siv_music_photo"
+        android:layout_marginStart="9dp"
+        android:layout_marginTop="29dp"
+        />
 
-    </FrameLayout>
+    <ImageView
+        android:id="@+id/iv_music_bar_option"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_music_bar_option"
+        app:layout_constraintTop_toTopOf="@id/iv_music_background"
+        app:layout_constraintEnd_toEndOf="@id/iv_music_background"
+        android:layout_marginTop="22dp"
+        android:layout_marginEnd="25dp"
+        />
+    <ImageView
+        android:id="@+id/iv_music_bar_next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/music_bar_next"
+        app:layout_constraintTop_toTopOf="@id/iv_music_background"
+        app:layout_constraintEnd_toEndOf="@id/iv_music_background"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="44dp"
+        />
+
+    <ImageView
+        android:id="@+id/iv_music_bar_play"
+        android:layout_width="13dp"
+        android:layout_height="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="88dp"
+        android:src="@drawable/music_bar_play"
+        app:layout_constraintEnd_toEndOf="@id/iv_music_background"
+        app:layout_constraintTop_toTopOf="@id/iv_music_background" />
+
+    <ImageView
+        android:id="@+id/iv_music_bar_stop"
+        android:layout_width="13dp"
+        android:layout_height="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="88dp"
+        android:src="@drawable/ic_play_stop"
+        app:layout_constraintEnd_toEndOf="@id/iv_music_background"
+        app:layout_constraintTop_toTopOf="@id/iv_music_background"
+        android:visibility="invisible"/>
+
+
+
+    <ImageView
+        android:id="@+id/iv_music_bar_previous"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_music_bar_previous"
+        app:layout_constraintTop_toTopOf="@id/iv_music_background"
+        app:layout_constraintEnd_toEndOf="@id/iv_music_background"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="133dp"
+        />
 
 
 

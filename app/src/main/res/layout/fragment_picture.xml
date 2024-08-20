@@ -34,6 +34,17 @@
 
     </FrameLayout>
 
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="오늘은 어떤 추억을 가지고 왔어?"
+        android:textSize="20sp"
+        android:textColor="#797979"
+        app:layout_constraintBottom_toTopOf="@id/iv_gallery"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="20dp"/>
     <ImageView
         android:id="@+id/iv_gallery"
         android:layout_width="wrap_content"

@@ -61,16 +61,17 @@
 
     <GridView
         android:id="@+id/gv_mood"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/tv_mood_q2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="40dp"
         android:numColumns="3"
-        android:columnWidth="107dp"
-        android:horizontalSpacing="6.57dp"
+        android:horizontalSpacing="0dp"
         android:verticalSpacing="7dp"
         android:stretchMode="columnWidth"
-        android:gravity="center"
-        android:scrollbars="vertical"/>
+        android:paddingStart="22dp"
+        android:clipToPadding="false"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
