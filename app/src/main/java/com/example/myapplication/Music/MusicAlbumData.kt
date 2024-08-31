@@ -13,5 +13,5 @@ data class MusicAlbumData(
     val musicUrl:String = "",
     val musicTag1:String,
     val musicTag2:String,
-    val bookmarked: Boolean
+    var bookmarked: Boolean
 ):Parcelable

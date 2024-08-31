@@ -40,9 +40,23 @@ class MusicAlbumAdapter(
             binding.tvItemTag1.text = "#"+item.musicTag1+" "
             binding.tvItemTag2.text = "#"+item.musicTag2
 
-            binding.ivItemHeartEmpty.setOnClickListener {
-                toggleHeart(item.memoryId)
+
+    // 초기 즐겨찾기 상태 설정
+            if (item.bookmarked) {
+                binding.ivItemHeartEmpty.setImageResource(R.drawable.ic_music_heart)
+                binding.ivItemHeartEmpty.tag = "filled"
+            } else {
+                binding.ivItemHeartEmpty.setImageResource(R.drawable.icon_heart_gray_empty)
+                binding.ivItemHeartEmpty.tag = "empty"
             }
+    // 즐겨찾기 토글 기능
+            binding.ivItemHeartEmpty.setOnClickListener {
+                toggleHeart(item)
+            }
+
+            /*binding.ivItemHeartEmpty.setOnClickListener {
+                toggleHeart(item.memoryId)
+            }*/
 
             binding.apply {
                 val clickListener= View.OnClickListener {
@@ -59,16 +73,19 @@ class MusicAlbumAdapter(
             }
 
         }
-
-        private fun toggleHeart(memoryId:Int) {
+//변경 전 파라메터: mempryId:Int, apiBookmark(memoryId)
+        private fun toggleHeart(item: MusicAlbumData) {
             if (binding.ivItemHeartEmpty.tag == null || binding.ivItemHeartEmpty.tag == "empty") {
                 binding.ivItemHeartEmpty.setImageResource(R.drawable.ic_music_heart)
                 binding.ivItemHeartEmpty.tag = "filled"
+                item.bookmarked = true // 즐겨찾기 상태 변경
             } else {
                 binding.ivItemHeartEmpty.setImageResource(R.drawable.icon_heart_gray_empty)
                 binding.ivItemHeartEmpty.tag = "empty"
+                item.bookmarked = false // 즐겨찾기 상태 변경
             }
-            apiBookmark(memoryId)
+            //apiBookmark(memoryId)
+            apiBookmark(item.memoryId)
         }
     }
 
