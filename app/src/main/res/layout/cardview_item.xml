@@ -35,36 +35,54 @@
             android:scaleType="centerCrop"
             app:shapeAppearanceOverlay="@style/RoundedImageView"/>
 
-        <ImageView
-            android:id="@+id/iv_music_background"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_music_container"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_music_background"
-            app:layout_constraintTop_toTopOf="@id/ivDiaryImage"
-            app:layout_constraintStart_toStartOf="@id/ivDiaryImage"
             android:layout_marginTop="11dp"
-            android:layout_marginStart="9dp"/>
+            android:layout_marginStart="9dp"
+            app:layout_constraintTop_toTopOf="@id/ivDiaryImage"
+            app:layout_constraintStart_toStartOf="@id/ivDiaryImage">
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_music_icon"
-            app:layout_constraintStart_toStartOf="@id/iv_music_background"
-            app:layout_constraintTop_toTopOf="@id/iv_music_background"
-            app:layout_constraintBottom_toBottomOf="@id/iv_music_background"
-            android:layout_marginStart="7.6dp"/>
+            <!-- 음악 배경 이미지 -->
+            <ImageView
+                android:id="@+id/iv_music_background"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:src="@drawable/ic_music_background"
+                app:layout_constraintTop_toTopOf="@id/tv_music_title"
+                app:layout_constraintBottom_toBottomOf="@id/tv_music_title"
+                app:layout_constraintStart_toStartOf="@id/iv_music_icon"
+                app:layout_constraintEnd_toEndOf="@id/tv_music_title"
+                android:scaleType="fitXY"/>
 
-        <TextView
-            android:id="@+id/tv_music_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/pretendard600"
-            android:textSize="10sp"
-            android:textColor="@color/white"
-            app:layout_constraintStart_toStartOf="@id/iv_music_background"
-            app:layout_constraintTop_toTopOf="@id/iv_music_background"
-            app:layout_constraintBottom_toBottomOf="@id/iv_music_background"
-            android:layout_marginStart="23dp"/>
+            <!-- 음악 아이콘 -->
+            <ImageView
+                android:id="@+id/iv_music_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_music_icon"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:paddingLeft="7.6dp" />
+
+            <!-- 음악 제목 -->
+            <TextView
+                android:id="@+id/tv_music_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/pretendard600"
+                android:textSize="10sp"
+                android:textColor="@color/white"
+                android:paddingVertical="4dp"
+                android:paddingEnd="10dp"
+                app:layout_constraintStart_toEndOf="@id/iv_music_icon"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginStart="5dp"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
 
         <TextView

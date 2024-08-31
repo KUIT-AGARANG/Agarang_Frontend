@@ -214,20 +214,18 @@ class PicAssociationFragment : Fragment() {
                                             Log.d("Tag",result.toString())
                                             //심화 fragment 로 넘어가야 함 -> 응답으로 온 audioUrl을 음성으로 내보내고, text ui에 띄우기
 
-                                            binding.ivRecordingNextBtn.setOnClickListener {
-                                                //번들로 전달 (DeepQuestion으로)
-                                                val bundle = Bundle().apply {
-                                                    putString("id", result.result.question.id)
-                                                    putString("text", result.result.question.text)
-                                                    putString("audioUrl", result.result.question.audioUrl)
-                                                }
-                                                Log.d("bundle",result.result.question.text)
-                                                nextfragment.arguments = bundle
-
-                                                parentFragmentManager.beginTransaction()
-                                                    .replace(R.id.memory_frm,nextfragment)
-                                                    .commit()
+                                            //번들로 전달 (DeepQuestion으로)
+                                            val bundle = Bundle().apply {
+                                                putString("id", result.result.question.id)
+                                                putString("text", result.result.question.text)
+                                                putString("audioUrl", result.result.question.audioUrl)
                                             }
+                                            Log.d("bundle",result.result.question.text)
+                                            nextfragment.arguments = bundle
+
+                                            parentFragmentManager.beginTransaction()
+                                                .replace(R.id.memory_frm,nextfragment)
+                                                .commit()
                                         }
                                     }else{
                                         Log.e("PicAssociationFragment","Failed to get response")

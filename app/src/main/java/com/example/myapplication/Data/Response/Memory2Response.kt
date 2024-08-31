@@ -4,5 +4,5 @@ data class Memory2Response(
     val isSuccess: Boolean,
     val code: Int,
     val message: String,
-    val result: Result
+    val result: List<Any> = emptyList()
 )

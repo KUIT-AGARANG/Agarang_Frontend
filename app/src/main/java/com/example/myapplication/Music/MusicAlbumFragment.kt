@@ -67,7 +67,7 @@ class MusicAlbumFragment : Fragment() {
                                         memoryId=tracks.memoryId,
                                         imageUrl = tracks.imageUrl,
                                         musicTitle = tracks.musicTitle,
-                                        musicUrl = tracks.musicUrl,
+                                        musicUrl = tracks.musicUrl ?: "",
                                         musicTag1 = tag1,
                                         musicTag2 = tag2,
                                         bookmarked = tracks.bookmarked
