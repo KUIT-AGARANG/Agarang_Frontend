@@ -12,7 +12,7 @@ import android.widget.TextView
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import com.example.myapplication.R
-import com.example.myapplication.SharedViewModel
+import com.example.myapplication.Data.SharedViewModel
 
 class GenreAdapter(
     private val context: Context,

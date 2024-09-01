@@ -11,7 +11,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
-import com.example.myapplication.SharedViewModel
+import com.example.myapplication.Data.SharedViewModel
 import com.example.myapplication.databinding.FragmentSelectInstrumentBinding
 
 
