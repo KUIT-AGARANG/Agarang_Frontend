@@ -17,7 +17,7 @@ interface LoginIF {
     @POST("/oauth2/authorization/google")
     fun authorizeGoogle(): Call<ResponseBody>
 
-    @POST("/api/login/process-baby")
+    @POST("/api/login/baby-code")
     fun postBabyCode(@Body babyCode: BabyCodeRequest): Call<CommonResponse>
 
     @POST("/api/login/process-baby")
