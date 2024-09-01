@@ -25,6 +25,7 @@ class CardViewAdapter(
     inner class ViewHolder(val binding: CardviewItemBinding) : RecyclerView.ViewHolder(binding.root)
     private var mediaPlayer: MediaPlayer? = null
     private var audioUrl: String? = null
+    private var isPlaying=false
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = CardviewItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -47,8 +48,16 @@ class CardViewAdapter(
             } else {
                 tvMusicTitle.text = item.musicTitle
                 ivDiaryImage.setOnClickListener {
-                    audioUrl = item.musicUrl
-                    playAudio()
+                   audioUrl = item.musicUrl
+                    if (mediaPlayer==null||!isPlaying){
+                        playAudio()
+                    }else{
+                        mediaPlayer?.pause()
+                        isPlaying=false
+                    }
+                    mediaPlayer?.setOnCompletionListener {
+                        resetAudio()
+                    }
                 }
             }
 
@@ -150,26 +159,46 @@ class CardViewAdapter(
         dialogFragment.show(fragmentManager, DiaryDeleteDialogFragment.TAG)
     }
 
+
     private fun playAudio() {
         if (audioUrl == null) {
             Log.e("PicAssociationFragment", "Audio URL is null")
             return
         }
 
-        mediaPlayer = MediaPlayer().apply {
-            setOnPreparedListener {
-                start()
+        if(mediaPlayer==null){
+            mediaPlayer=MediaPlayer().apply {
+                setOnPreparedListener {
+                    start()
+                    this@CardViewAdapter.isPlaying=true
+                }
+                setOnCompletionListener {
+                    resetAudio()
+                    this@CardViewAdapter.isPlaying=false
+                }
+                try {
+                    setDataSource(audioUrl)
+                    prepareAsync()
+                }catch (e:IOException){
+                    Log.e("PicAssociationFragment", "Error playing audio", e)
+                }
             }
-            try {
-                setDataSource(audioUrl)
-                prepareAsync()
-            } catch (e: IOException) {
-                Log.e("PicAssociationFragment", "Error playing audio", e)
+
+        }else{
+            if(isPlaying){
+                mediaPlayer?.pause()
+                isPlaying=false
+            }else{
+                mediaPlayer?.start()
             }
         }
     }
 
-
+    private fun resetAudio() {
+        mediaPlayer?.release()
+        mediaPlayer=null
+        isPlaying=false
+    }
 
     private fun deleteMemory(item: DiaryMainCardData) {
         val position = items.indexOf(item)

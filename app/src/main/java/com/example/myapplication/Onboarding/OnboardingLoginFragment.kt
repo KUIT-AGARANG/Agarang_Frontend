@@ -1,4 +1,4 @@
-package com.example.myapplication
+package com.example.myapplication.Onboarding
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.myapplication.Login.LoginActivity
-import com.example.myapplication.databinding.FragmentOnboardingFourthBinding
 import com.example.myapplication.databinding.FragmentOnboardingLoginBinding
 
 

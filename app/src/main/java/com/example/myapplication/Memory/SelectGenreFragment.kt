@@ -11,7 +11,7 @@ import android.widget.GridView
 import android.widget.ImageView
 import androidx.fragment.app.activityViewModels
 import com.example.myapplication.R
-import com.example.myapplication.SharedViewModel
+import com.example.myapplication.Data.SharedViewModel
 import com.example.myapplication.databinding.FragmentSelectGenreBinding
 
 class SelectGenreFragment : Fragment() {
