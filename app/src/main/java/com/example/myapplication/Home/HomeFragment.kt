@@ -7,35 +7,27 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.SeekBar
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.myapplication.Data.Response.HomeResponse
-import com.example.myapplication.Data.Response.MonthlyMemory
 import com.example.myapplication.Diary.DiaryMainCardFragment
-import com.example.myapplication.Diary.DiaryMainMonthData
 import com.example.myapplication.Music.MusicAlbumData
 import com.example.myapplication.R
 
 
-import com.example.myapplication.Retrofit.DiaryIF
 import com.example.myapplication.Retrofit.HomeIF
 import com.example.myapplication.Retrofit.RetrofitService
-import com.example.myapplication.Setting.ChildInfoChangeFragment
 
 import com.example.myapplication.Setting.HomeSettingFragment
-import com.example.myapplication.SharedViewModel
+import com.example.myapplication.Data.SharedViewModel
 import com.example.myapplication.databinding.FragmentHomeBinding
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 import java.text.SimpleDateFormat
-import java.util.Calendar
 import java.util.Locale
 
 class HomeFragment: Fragment() {

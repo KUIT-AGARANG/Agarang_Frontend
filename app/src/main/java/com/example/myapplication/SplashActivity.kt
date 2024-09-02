@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.myapplication.Login.LoginActivity
+import com.example.myapplication.Onboarding.OnboardingActivity
 
 class SplashActivity : AppCompatActivity() {
     @SuppressLint("MissingInflatedId")

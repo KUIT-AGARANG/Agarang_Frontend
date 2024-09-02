@@ -21,7 +21,7 @@ import com.example.myapplication.MainActivity
 import com.example.myapplication.R
 import com.example.myapplication.Retrofit.MemoryIF
 import com.example.myapplication.Retrofit.RetrofitService
-import com.example.myapplication.SharedViewModel
+import com.example.myapplication.Data.SharedViewModel
 import com.example.myapplication.databinding.FragmentSelectSpeedBinding
 import retrofit2.Call
 import retrofit2.Callback

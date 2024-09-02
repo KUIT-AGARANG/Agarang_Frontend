@@ -36,6 +36,14 @@ class HomeSettingFragment : Fragment() {
 
         fetchBabyInfo()
 
+        binding.tvChildInfo.setOnClickListener {
+            val fragment=ChildInfoChangeFragment()
+            val transaction=parentFragmentManager.beginTransaction()
+            transaction.replace(R.id.main_frm,fragment)
+            transaction.addToBackStack(null)
+            transaction.commit()
+        }
+
         binding.ivChildInfoPlus.setOnClickListener {
             val fragment=ChildInfoChangeFragment()
             val transaction=parentFragmentManager.beginTransaction()
@@ -52,7 +60,22 @@ class HomeSettingFragment : Fragment() {
             transaction.commit()
         }
 
+        binding.tvFamilyInfo.setOnClickListener {
+            val fragment=FamilyInfoFragment()
+            val transaction=parentFragmentManager.beginTransaction()
+            transaction.replace(R.id.main_frm,fragment)
+            transaction.addToBackStack(null)
+            transaction.commit()
+        }
+
         binding.ivCharInfoPlus.setOnClickListener {
+            val fragmentChangChar= ChangeCharFragment()
+            val transaction=parentFragmentManager.beginTransaction()
+            transaction.replace(R.id.main_frm,fragmentChangChar)
+                .commit()
+        }
+
+        binding.tvCharInfo.setOnClickListener {
             val fragmentChangChar= ChangeCharFragment()
             val transaction=parentFragmentManager.beginTransaction()
             transaction.replace(R.id.main_frm,fragmentChangChar)
