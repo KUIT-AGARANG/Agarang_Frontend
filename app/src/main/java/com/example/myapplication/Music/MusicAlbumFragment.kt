@@ -57,7 +57,7 @@ class MusicAlbumFragment : Fragment() {
                     if (result != null) {
                         val tracks = result.tracks
                         binding.tvMusicTotal.text = "총 "+result.totalTrackCount.toString()+"곡"
-                        binding.tvTotalTime.text = result.totalTrackTime.toString()+"분"
+                        binding.tvTotalTime.text = result.totalTrackTime.toString()+"초"
                         tracks?.let {
                             for(tracks in it){
                                 val tag1 = if (tracks.hashTags.isNotEmpty()) tracks.hashTags[0] else ""

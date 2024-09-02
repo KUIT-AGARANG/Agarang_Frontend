@@ -18,17 +18,6 @@
         android:background="@drawable/style_music_cover"
         />
 
-    <ImageView
-        android:id="@+id/iv_cover_heart"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_music_heart"
-        app:layout_constraintEnd_toEndOf="@id/iv_rv_cover_1"
-        app:layout_constraintBottom_toBottomOf="@id/iv_rv_cover_1"
-        android:layout_marginEnd="11.37dp"
-        android:layout_marginBottom="8.44dp"
-        />
-
     <TextView
         android:id="@+id/tv_cover_1"
         android:layout_width="155dp"
