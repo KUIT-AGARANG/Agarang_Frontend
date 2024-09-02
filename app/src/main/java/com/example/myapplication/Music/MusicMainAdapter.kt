@@ -24,11 +24,7 @@ class MusicMainAdapter(val items:ArrayList<MusicMainData>, private val fragmentA
 
             binding.tvCover1.text=item.musicContent
 
-            if (position==0){
-                binding.ivCoverHeart.visibility= View.VISIBLE
-            }else{
-                binding.ivCoverHeart.visibility= View.GONE
-            }
+
 
             binding.ivRvCover1.setOnClickListener{
                 val playlistId=item.playlistId
